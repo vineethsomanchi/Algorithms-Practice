@@ -109,7 +109,8 @@ class BST
 			else  
 				is_valid?(node.left, min, node.value)  
 				is_valid?(node.right, node.value, max)
-			end
+            end
+        end
 		return true
 	end
 
