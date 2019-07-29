@@ -1,4 +1,5 @@
 =begin
+    A priority queue is an ADT where each element has a "priority" associated with it. An element with high priority is served before an element with low priority.
     Built using heap - Specialized tree-based data structure which satisfies the heap property
     max-heap: For any given node, the key of the parent is greater than or equal to the key of the child
     min-heap: For any given node, the key of the parent is less than the key of the child
@@ -16,7 +17,7 @@ class MaxHeap
 
     #Return max priority item
     def peek
-        @array[0]
+        @array.first
     end
 
     #Insert and bubble up -- O(logn)
@@ -27,9 +28,9 @@ class MaxHeap
 
     #Pop and return max priority item and bubble down -- O(logn)
     def pop
-        exchange(1, @array.size - 1) #exchange root and last element
+        exchange(0, @array.size - 1) #exchange root and last element
         max = @array.pop #Return and remove last item
-        heapify_down(1)
+        heapify_down(0)
         max
     end
     
@@ -39,7 +40,7 @@ class MaxHeap
 
     def heapify_up(index)
         parent_index = ((index - 1) / 2)
-        return if index <= 1 #return if we reach root
+        return if index <= 0 #return if we reach root
         return if @array[parent_index] >= @array[index] #return if parent is greater than child [change for min]
         exchange(index, parent_index) #otherwise, exchange child with parent
         heapify_up(parent_index) #recursively keep going until base case is hit
@@ -55,7 +56,7 @@ class MaxHeap
 
         return if @array[index] >= @array[child_index] #return if parent is already bigger [change for min]
         exchange(index, child_index) #otherwise exchange
-        bubble_down(child_index) #recursively keep going until parent is larger than child
+        heapify_down(child_index) #recursively keep going until parent is larger than child
     end
 
 end
@@ -79,6 +80,40 @@ def heapsort(array)
     max_heap.array
 end
 
+class MaxHeap
+    def initialize
+        @array = []
+    end
+
+    def peek
+        @array.first
+    end
+
+    def <<(element)
+        @array << element
+        heapify_up(@array.length - 1)
+    end
+
+    def pop
+        exchange(0, @array.length - 1)
+        max = @array.pop
+        heapify_down(0)
+        max
+    end
+
+    def exchange(source, target)
+        @array[source], @array[target] = @array[target] @array[source]
+    end
+
+    def heapify_up(index)
+        parent_index = ((index - 1) / 2)
+        
+    end
+
+    def heapify_down(index)
+
+    end
+end
 
 
 
