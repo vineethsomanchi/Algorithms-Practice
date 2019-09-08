@@ -8,3 +8,4 @@ def is_mirror(a, b)
     return false  if a.val != b.val
     is_mirror(a.left, b.right) && is_mirror(a.right, b.left)
 end
+
