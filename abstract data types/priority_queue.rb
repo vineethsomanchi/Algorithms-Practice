@@ -80,40 +80,7 @@ def heapsort(array)
     max_heap.array
 end
 
-class MaxHeap
-    def initialize
-        @array = []
-    end
 
-    def peek
-        @array.first
-    end
-
-    def <<(element)
-        @array << element
-        heapify_up(@array.length - 1)
-    end
-
-    def pop
-        exchange(0, @array.length - 1)
-        max = @array.pop
-        heapify_down(0)
-        max
-    end
-
-    def exchange(source, target)
-        @array[source], @array[target] = @array[target] @array[source]
-    end
-
-    def heapify_up(index)
-        parent_index = ((index - 1) / 2)
-        
-    end
-
-    def heapify_down(index)
-
-    end
-end
 
 
 

@@ -24,6 +24,4 @@ class Stack
 
   private
   attr_reader :array
-
 end
-
